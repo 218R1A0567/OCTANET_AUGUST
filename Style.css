@@ -2,6 +2,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url('https://m.media-amazon.com/images/I/61DqYuFGHpL._AC_UF1000,1000_QL80_.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #f4f4f4;
     color: #333;
 }
