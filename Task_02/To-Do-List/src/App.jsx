@@ -1,28 +1,31 @@
 import { useState } from 'react'
+import { prompt } from 'react-dom';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [tasks, setTasks] = useState(['A']);
+  const addTask=()=>{
+    const newTask = prompt("Enter the Task:");
+    if(newTask){
+      setTasks([...tasks,newTask]);
+    }
+  };
   return (
     <>
       <div className="container">
         <div className="title">To Do List</div>
         <div className="menu-list-wrapper">
           <div className="Menu">
-            Menu
-            <div className="item1">➕</div>
-            <div className="item2">Ⓜ️</div>
-            <div className="item3">🔍</div>
-            <div className="item4">✔️</div>
+            <label className="label-menu">MENU</label>
+            <button className="item1" onClick={addTask}>➕</button>
+            <button className="item2">Ⓜ️</button>
+            <button className="item3">🔍</button>
+            <button className="item4">✔️</button>
           </div>
           <div className="list">
-            LIST
-            <div className="card1">A</div>
-            <div className="card2">B</div>
-            <div className="card3">C</div>
-            <div className="card4">D</div>
-            <div className="card5">E</div>
+          {tasks.map((task, index) => (
+              <div key={index} className={`card${index + 1}`}>{task}</div>
+            ))}
           </div>
         </div>
       </div>
