@@ -15,6 +15,7 @@
   margin-top: 20px;
 }
 
+
 .menu-list-wrapper {
   position: relative;
   background-color: blue;
@@ -52,28 +53,55 @@
 }
 
 .list {
-  font-size: 300%;
+  width: 1200px;
   height: 500px;
-  width: 1000px;
-  background-color: aquamarine;
-  color: black;
+  overflow-y: auto; /* Enable vertical scrolling if needed */
   padding: 10px;
-  text-align: center;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping of tasks to the next line */
+  gap: 10px; /* Space between cards */
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
 }
 
+.card {
+  width: 100px; /* Width of each card */
+  height: 100px; /* Height of each card */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background-color: #e6f0ff;
+}
+
+
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 8px;
+}
+
+
 .card1, .card2, .card3, .card4, .card5, .card6, .card7, .card8, .card9, .card10, .card11, .card12 {
-  font-size: 70%;
+  font-size: 120%;
   background-color: rgb(235, 3, 224);
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +111,6 @@
   margin: 10px;
 }
 
-/* Floating input box styling */
 .task-input-wrapper {
   position: fixed;
   top: 50%;
@@ -120,4 +147,73 @@
 
 .task-input-wrapper button:hover {
   background-color: #0056b3;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  border-radius: 16px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.completed-panel {
+  position: absolute;
+  margin-top: 350px;
+  background-color: #007bff;
+  width: 500px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.completed-panel.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.completed-card {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #4322fd;
+  transition: transform 0.3s ease-in-out;
+}
+
+.completed-card:hover {
+  transform: scale(1.05);
+  background-color: #007bff;
+}
+
+.completed-actions {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.completed-card:hover .completed-actions {
+  visibility: visible;
+  opacity: 1;
 }

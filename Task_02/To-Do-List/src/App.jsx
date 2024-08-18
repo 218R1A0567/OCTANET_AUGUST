@@ -42,7 +42,7 @@ function App() {
 
   const toggleCompletedPanel = () => {
     setShowCompletedPanel(!showCompletedPanel);
-  };
+  };  
 
   const startEditing = (index) => {
     setEditIndex(index);
@@ -94,7 +94,7 @@ function App() {
             <label className="label-menu">MENU</label>
             <button className="item1" onClick={toggleInput}>➕</button>
             <button className="item2" onClick={toggleModifyMode}>Ⓜ️</button>
-            <button className="item3" onClick={toggleDeleteMode}>🔍</button>
+            <button className="item3" onClick={toggleDeleteMode}>➖</button>
             <button className="item4" onClick={toggleCompletedPanel}>✔️</button>
           </div>
           {showInput && (
@@ -113,6 +113,7 @@ function App() {
             </div>
           )}
           <div className="list">
+            <h2>Tasks</h2>
             {tasks.map((task, index) => (
               <div key={index} className={`card card${index + 1}`}>
                 <div className="card-inner">
@@ -134,7 +135,7 @@ function App() {
           </div>
         </div>
         {showCompletedPanel && (
-          <div className="completed-panel">
+          <div className={`completed-panel ${showCompletedPanel ? 'active' : ''}`}>
             <h2>Completed Tasks</h2>
             {completedTasks.map((task, index) => (
               <div key={index} className={`completed-card completed-card${index + 1}`}>
