@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './App.css';
+import './App2.css';
 
 function App() {
-  const [tasks, setTasks] = useState(['A']);
+  const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
   const [showInput, setShowInput] = useState(false);
@@ -101,6 +102,7 @@ function App() {
             <div className="task-input-wrapper">
               <input 
                 type="text" 
+                autoFocus
                 value={newTask} 
                 onChange={(e) => setNewTask(e.target.value)} 
                 placeholder="Enter a new task" 
@@ -112,8 +114,8 @@ function App() {
               )}
             </div>
           )}
+          <label className='task-label'>Tasks</label>
           <div className="list">
-            <h2>Tasks</h2>
             {tasks.map((task, index) => (
               <div key={index} className={`card card${index + 1}`}>
                 <div className="card-inner">

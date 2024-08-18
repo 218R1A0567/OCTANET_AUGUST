@@ -1,0 +1,113 @@
+
+/* Task Input Wrapper */
+.task-input-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .task-input-wrapper input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .task-input-wrapper button {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .task-input-wrapper button:hover {
+    background-color: #357ab9;
+  }
+  
+  /* Card Inner for Flipping Effect */
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+  
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 8px;
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  
+  /* Completed Panel */
+  .completed-panel {
+    position: absolute;
+    margin-top: 350px;
+    background-color: #4a90e2;
+    width: 500px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  .completed-panel.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Completed Cards */
+  .completed-card {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #4a90e2;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .completed-card:hover {
+    transform: scale(1.05);
+    background-color: #4a90e2;
+  }
+  
+  /* Completed Actions */
+  .completed-actions {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+  
+  .completed-card:hover .completed-actions {
+    visibility: visible;
+    opacity: 1;
+  }
+  
